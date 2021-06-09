@@ -53,10 +53,11 @@ def logout():
     except selenium.common.exceptions.NoSuchElementException:
         pass
 
+
 class websiteTestCase(unittest.TestCase):
 
     # test id: test.F-REQ-2.2
-    def test_3(self):
+    def test_7(self):
         driver.get(website_url)
         slider = driver.find_element_by_class_name('MuiSlider-rail')
         width = slider.size['width']
@@ -70,50 +71,50 @@ class websiteTestCase(unittest.TestCase):
         self.assertEqual(passed, True)
 
     # test id: test.F-REQ-1.1
-    def test_4(self):
+    def test_8(self):
         driver.get(website_url)
         self.assertEqual(find_slider(), True)
         logout()
 
     # test id: test.F-REQ-1.2
-    def test_5(self):
+    def test_9(self):
         signup('eee@gmail.com', 'passwd')
         self.assertEqual(find_slider(), True)
         logout()
 
     # test id: test.F-REQ-1.3
-    def test_6(self):
+    def test_10(self):
         signup('bbb@gmail.com', 'passwd')
         self.assertEqual(find_slider(), True)
         logout()
 
     # test id: test.F-REQ-3.1
-    def test_7(self):
+    def test_11(self):
         driver.get(website_url)
         self.assertEqual(change_assignment(), False)
         logout()
 
     # test id: test.F-REQ-3.2
-    def test_8(self):
+    def test_12(self):
         signup('ddd@gmail.com', 'passwd')
         time.sleep(1)
         self.assertEqual(change_assignment(), True)
         logout()
 
     # test id: test.F-REQ-3.3
-    def test_9(self):
+    def test_13(self):
         signup('ccc@gmail.com', 'passwd')
         time.sleep(5)
         self.assertEqual(change_assignment(), True)
         logout()
 
     # test id: test.F-REQ-4.1
-    def test_10(self):
+    def test_14(self):
         self.assertEqual(signup('aaa@gmail.com', 'passwd'), True)
         logout()
 
     # test id: test.F-REQ-4.2
-    def test_11(self):
+    def test_15(self):
         signup('fff@gmail.com', 'passwd')
         time.sleep(1)
         driver.find_element_by_xpath('//*[@id="root"]/div/nav/div/div[2]/div/div/div/a/button')
@@ -121,47 +122,6 @@ class websiteTestCase(unittest.TestCase):
         self.assertEqual(signup('fff@gmail.com', 'passwd1'), False)
         logout()
 
-    # test id: test.F-REQ-4.3
-    def test_12(self):
-        signup('ggg@gmail.com', '')
-        time.sleep(1)
-        passed = True
-        try:
-            driver.find_element_by_xpath('//*[@id="root"]/div/nav/div/div[2]/div/div/div/a/button').click()
-        except selenium.common.exceptions.NoSuchElementException:
-            passed = False
-        self.assertEqual(passed, False)
-    # test id: test.F-REQ-5.1
-    def test_13(self):
-        driver.get(website_url)
-        time.sleep(1)
-        passed = True
-        try:
-            driver.find_element_by_xpath('//*[@id="root"]/div/div[3]/div/div/div[1]/div[1]/div/div/a').click()
-        except:
-            passed = False
-        self.assertEqual(passed, True)
-    # test id: test.F-REQ-5.2
-    def test_14(self):
-        driver.get(website_url)
-        time.sleep(1)
-        passed = True
-        try:
-            driver.find_element_by_xpath('//*[@id="root"]/div/div[3]/div/div/div[1]/div[1]/a/div').click()
-        except:
-            passed = False
-        self.assertEqual(passed, True)
-
-    # test id: test.F-REQ-5.3
-    def test_15(self):
-        driver.get(website_url)
-        signup('kkk@gmail.com', 'passwd')
-        passed = True
-        try:
-            driver.find_element_by_xpath('//*[@id="root"]/div/div[3]/div/div/div[1]/div[1]/a/div/img').click()
-        except:
-            passed = False
-            self.assertEqual(passed, True)
 
 if __name__ == '__main__':
     unittest.main()
